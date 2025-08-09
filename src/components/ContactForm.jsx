@@ -27,6 +27,7 @@ const ContactForm = ({ onSubmit }) => {
                 Telefone
                 <input type="tel" name="telefone" value={formData.telefone} onChange={handleChange} />
             </label>
+            <button type="default">Salvar</button>
         </form>
     )
 }
