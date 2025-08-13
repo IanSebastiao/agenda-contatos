@@ -27,3 +27,35 @@ test('chama onSubmit com dados corretos', () => {
         telefone: '64999287353'
     }); //Verifica se tem os dados
 });
+
+test('atualiza contato existente', () => {
+    const handleSubmit = jest.fn();
+    const contatoExistente = {
+        nome: 'Ian',
+        email: 'iansebastiao1234@gmail.com',
+        telefone: '4999287353',
+    };
+
+    render(<ContactForm contact={contatoExistente} onSubmit={handleSubmit} />);
+
+    fireEvent.change(screen.getByLabelText(/nome/i), { target: { value: 'Ian Sebastião' } });
+    fireEvent.submit(screen.getByRole('form'));
+
+    expect(handleSubmit).toHaveBeenCalledWith({
+        nome: 'Ian Sebastião',
+        email: 'iansebastiao1234@gmail.com',
+        telefone: '4999287353',
+    });
+});
+
+test('valida que os campos obrigatórios foram preenchidos', () => {
+    const handleSubmit = jest.fn();
+    render(<ContactForm onSubmit={handleSubmit} />);
+
+    fireEvent.submit(screen.getByRole('form'));
+
+    expect(screen.getByText(/nome é obrigatório/i)).toBeInTheDocument();
+    expect(screen.getByText(/email é obrigatório/i)).toBeInTheDocument();
+    expect(screen.getByText(/telefone é obrigatório/i)).toBeInTheDocument();
+    expect(handleSubmit).not.toHaveBeenCalled();
+});

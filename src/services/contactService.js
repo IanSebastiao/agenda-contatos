@@ -16,3 +16,9 @@ export const deleteContact = async (id) => {
     const { error } = await supabase.from('contatos').delete().eq('id', id);
     if (error) throw error;
 };
+
+export const updateContact = async (id, data) => {
+    const { error } = await supabase.from('contatos').update(data).eq('id', id);
+    if (error) throw error;
+
+};

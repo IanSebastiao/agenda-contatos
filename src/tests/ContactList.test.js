@@ -51,4 +51,4 @@ test('deleta um contato ao clicar em "Remover"', async () => {
         expect(deleteContactMock).toHaveBeenCalledWith('1');
         expect(screen.queryByText('Ana')).not.toBeInTheDocument();
     });
-});
+}); 
