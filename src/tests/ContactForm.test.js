@@ -58,4 +58,4 @@ test('valida que os campos obrigatórios foram preenchidos', () => {
     expect(screen.getByText(/email é obrigatório/i)).toBeInTheDocument();
     expect(screen.getByText(/telefone é obrigatório/i)).toBeInTheDocument();
     expect(handleSubmit).not.toHaveBeenCalled();
-});
+}); 

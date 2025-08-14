@@ -21,4 +21,4 @@ export const updateContact = async (id, data) => {
     const { error } = await supabase.from('contatos').update(data).eq('id', id);
     if (error) throw error;
 
-};
+};  

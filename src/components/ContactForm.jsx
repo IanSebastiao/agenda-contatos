@@ -24,7 +24,7 @@ const ContactForm = ({ contact = {}, onSubmit }) => {
         if (Object.keys(newErrors).length === 0) {
             onSubmit(formData);
         }
-    };
+    }; 
 
 
     return (

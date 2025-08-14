@@ -40,4 +40,4 @@ describe('lista contatos', () => {
 
         await expect(getContacts()).rejects.toThrow('Erro ao listar');
     });
-});
+}); 
