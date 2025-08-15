@@ -17,8 +17,14 @@ export const deleteContact = async (id) => {
     if (error) throw error;
 };
 
-export const updateContact = async (id, data) => {
-    const { error } = await supabase.from('contatos').update(data).eq('id', id);
+export const updateContact = async (id, contact) => {
+    // Remove formatação do telefone antes de enviar
+    const contactToUpdate = {
+        ...contact,
+        telefone: contact.telefone.replace(/\D/g, '')
+    };
+
+    const { error } = await supabase.from('contatos').update(contactToUpdate).eq('id', id);
     if (error) throw error;
 
-};  
+};
